@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+// import { useState } from 'react';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,12 +23,60 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className="antialiased min-h-screen bg-gray-50 dark:bg-gray-900">
+        {/* Header / Navbar */}
+        <header className="bg-white dark:bg-gray-800 shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16">
+              {/* Left side: Logo & Desktop Links */}
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <h1 className="text-2xl font-extrabold">
+                    <a href="/">OptionStrat</a>
+                  </h1>
+                  {/* Alternatively, place an <img> or <Image> for your logo */}
+                </div>
+
+                {/* Desktop nav links */}
+                <nav className="hidden sm:flex sm:ml-6 sm:space-x-8 ml-10">
+                  <a
+                    href="/strategies"
+                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  >
+                    Strategies
+                  </a>
+                  <a
+                    href="/calculator"
+                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  >
+                    Calculator
+                  </a>
+
+                  <a
+                    href="/pricer"
+                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  >
+                    Option Pricer
+                  </a>
+
+
+                </nav>
+              </div>
+
+            
+            </div>
+          </div>
+
+         
+        </header>
+
+        {/* Main Content */}
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          {children}
+        </main>
       </body>
     </html>
   );
